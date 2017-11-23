@@ -12,6 +12,10 @@ namespace Sentence_Generator.Logic
 
         public int Choice { get => _choice; set => _choice = value; }
 
+        public object ClassElement { get => _classElement; set => _classElement = value; }
+
+        private object _classElement;
+
         public UserInterface()
         {
             Choice = 0;
@@ -34,6 +38,21 @@ namespace Sentence_Generator.Logic
             while (!int.TryParse(Console.ReadLine(), out consoleInput))
                 Console.Write("The value must be of integer type, try again: ");
             Choice = consoleInput;
+
+            switch(Choice)
+            {
+                case 1:
+                    ClassElement = new Sentence();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
         }
     }
 }
