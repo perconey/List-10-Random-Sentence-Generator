@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace Sentence_Generator.Logic
 {
     class UserInterface
     {
+
         private int _choice;
 
         public int Choice { get => _choice; set => _choice = value; }
@@ -33,7 +35,8 @@ namespace Sentence_Generator.Logic
                               $"2. Subject + Verb + Adverb\n" +
                               $"3. Subject + Verb + Noun\n" +
                               $"4. Subject + Verb + Adjective\n" +
-                              $"5. Subject + Verb + Object\n");
+                              $"5. Subject + Verb + Object\n" +
+                              $"6. Connect");
 
             while (!int.TryParse(Console.ReadLine(), out consoleInput))
                 Console.Write("The value must be of integer type, try again: ");
@@ -51,6 +54,9 @@ namespace Sentence_Generator.Logic
                 case 4:
                     break;
                 case 5:
+                    break;
+                case 6:
+                    DataBaseWordsImporter imp = new DataBaseWordsImporter();
                     break;
             }
         }
