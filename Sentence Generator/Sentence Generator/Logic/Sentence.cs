@@ -17,12 +17,19 @@ namespace Sentence_Generator.Logic
         private int _type;
 
         public int Type { get => _type; set => _type = value; }
+        internal WordContainer WordCont { get => _wordCont; set => _wordCont = value; }
 
-        public Sentence()
+        private WordContainer _wordCont;
+        
+
+        public Sentence(int type)
         {
-            
+            Type = type;
+        }
 
-           
+        public void AssignGivenValuesToProperties()
+        {
+
         }
     }
 }
