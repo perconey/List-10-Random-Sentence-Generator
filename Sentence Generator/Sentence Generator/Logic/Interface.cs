@@ -14,9 +14,9 @@ namespace Sentence_Generator.Logic
 
         public int Choice { get => _choice; set => _choice = value; }
 
-        public object ClassElement { get => _classElement; set => _classElement = value; }
+        public Sentence Sent { get => _sent; set => _sent = value; }
 
-        private object _classElement;
+        private Sentence _sent;
 
         public UserInterface()
         {
@@ -45,20 +45,22 @@ namespace Sentence_Generator.Logic
             switch(Choice)
             {
                 case 1:
-                    ClassElement = new Sentence();
+                    Sent = new Sentence(1);
                     break;
                 case 2:
+                    Sent = new Sentence(2);
                     break;
                 case 3:
+                    Sent = new Sentence(3);
                     break;
                 case 4:
+                    Sent = new Sentence(4);
                     break;
                 case 5:
-                    break;
-                case 6:
-                    DataBaseWordsImporter imp = new DataBaseWordsImporter();
+                    Sent = new Sentence(5);
                     break;
             }
+
         }
     }
 }

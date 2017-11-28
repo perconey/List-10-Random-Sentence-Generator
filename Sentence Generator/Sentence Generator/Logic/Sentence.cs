@@ -18,13 +18,26 @@ namespace Sentence_Generator.Logic
 
         public int Type { get => _type; set => _type = value; }
         internal WordContainer WordCont { get => _wordCont; set => _wordCont = value; }
-
+        public StringBuilder sentenceBuild;
         private WordContainer _wordCont;
         
 
         public Sentence(int type)
         {
-            Type = type;
+            switch(type)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+
+            }
         }
 
         public void AssignGivenValuesToProperties()
