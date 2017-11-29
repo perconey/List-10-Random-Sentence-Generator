@@ -17,7 +17,15 @@ namespace Sentence_Generator.Logic
         private MySqlConnection _conn = new MySqlConnection("server=localhost; userid=root; database=sentencegeneratorresources; password=sqlmc123");
         public MySqlConnection Conn { get => _conn; set => _conn = value; }
         public string ImportedString { get => _importedString; set => _importedString = value; }
-        public List<List<string>> listOfWordsLists;
+
+        /// <summary>
+        /// KeyValuePair legend:
+        /// String stands for the actual word all in lower case
+        /// Int stands for the type of word for further management, you can see allt he word type id's in 
+        /// WordContainer class (enum WordType)
+        /// </summary>
+        public List<List<KeyValuePair<string,int>>> listOfVariousWordsStringIDpairs = new List<List<KeyValuePair<string, int>>>();
+
 
         public DataBaseWordsImporter()
         {
@@ -39,17 +47,18 @@ namespace Sentence_Generator.Logic
             int i;
             for (i = 1; i < 4; i++)
             {
-                List<string> temp = new List<string>();
+                List<KeyValuePair<string, int>> temp = new List<KeyValuePair<string, int>>();
                 string commandText = $"Select {WordType(i).Remove(WordType(i).Length - 1)} from {WordType(i)}";
                 MySqlCommand Command = new MySqlCommand(commandText, Conn);
                 MySqlDataReader reader = Command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    temp.Add(reader[WordType(i).Remove(WordType(i).Length - 1)].ToString());
+                    temp.Add(new KeyValuePair<string,int>(reader[WordType(i).Remove(WordType(i).Length - 1)].ToString(), i));
                 }
 
-                listOfWordsLists.Add(temp);
+                listOfVariousWordsStringIDpairs.Add(temp);
+                reader.Close();
             }
         }
 
@@ -71,11 +80,11 @@ namespace Sentence_Generator.Logic
 
         public void ShowAllImportedWords()
         {
-            foreach(var el in listOfWordsLists)
+            foreach(var el in listOfVariousWordsStringIDpairs)
             {
                 foreach(var s in el)
                 {
-                    Console.WriteLine(s);
+                    Console.WriteLine(s.Key + " " + s.Value);
                 }
             }
         }

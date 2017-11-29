@@ -17,10 +17,11 @@ namespace Sentence_Generator
          
         static void Main(string[] args)
         {
-            //gui.BeginSentenceGenerator();
-            DataBaseWordsImporter imp = new DataBaseWordsImporter();
-            imp.ConnectAndImport();
-            imp.ShowAllImportedWords();
+            //DataBaseWordsImporter imp = new DataBaseWordsImporter();
+            //imp.ConnectAndImport();
+            //imp.ShowAllImportedWords();
+
+            gui.BeginSentenceGenerator();
 
             Console.ReadLine();
         }

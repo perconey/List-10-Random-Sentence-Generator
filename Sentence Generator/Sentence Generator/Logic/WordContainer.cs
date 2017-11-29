@@ -10,7 +10,7 @@ namespace Sentence_Generator.Logic
     {
         public enum WordType
         {
-            subject, verb, adverb, noun, oobject
+            subject = 1, verb = 2 , adverb = 3, noun = 4, oobject = 5, other = 6
         }
 
         private string _word;

@@ -60,7 +60,7 @@ namespace Sentence_Generator.Logic
                     Sent = new Sentence(5);
                     break;
             }
-
+            Sent.Show();
         }
     }
 }
