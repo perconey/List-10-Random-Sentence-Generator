@@ -20,7 +20,9 @@ namespace Sentence_Generator.Logic
         }
 
         private int _type;
-
+        /// <summary>
+        /// Unused prop
+        /// </summary>
         public int Type { get => _type; set => _type = value; }
         internal WordContainer WordCont { get => _wordCont; set => _wordCont = value; }
         public string ReadySentence { get => _readySentence; set => _readySentence = value; }

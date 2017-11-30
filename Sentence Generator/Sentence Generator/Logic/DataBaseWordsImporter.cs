@@ -47,6 +47,7 @@ namespace Sentence_Generator.Logic
             int i;
             for (i = 1; i < 4; i++)
             {
+                //Temporary list used for importing one table
                 List<KeyValuePair<string, int>> temp = new List<KeyValuePair<string, int>>();
                 string commandText = $"Select {WordType(i).Remove(WordType(i).Length - 1)} from {WordType(i)}";
                 MySqlCommand Command = new MySqlCommand(commandText, Conn);
@@ -62,7 +63,11 @@ namespace Sentence_Generator.Logic
             }
         }
 
-
+        /// <summary>
+        /// Helps in finding out current databse query table name
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns>Table name</returns>
         private string WordType(int i)
         {
             switch(i)
@@ -78,6 +83,9 @@ namespace Sentence_Generator.Logic
             return null;
         }
 
+        /// <summary>
+        /// Shows all of the words in entire databse (raw)
+        /// </summary>
         public void ShowAllImportedWords()
         {
             foreach(var el in listOfVariousWordsStringIDpairs)
